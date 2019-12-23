@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Platform, Dimensions, SafeAreaView } from 'react-native';
 import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
 import PubNubReact from 'pubnub-react';
+import Geolocation from '@react-native-community/geolocation';
 
 const { width, height } = Dimensions.get('window');
 
@@ -51,13 +52,14 @@ export default class LocationScreen extends React.Component {
   }
 
   componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
+    Geolocation.clearWatch(this.watchID);
   }
 
   watchLocation = () => {
     const { coordinate } = this.state;
 
-    this.watchID = navigator.geolocation.watchPosition(
+
+    this.watchID = Geolocation.watchPosition(
       position => {
         const { latitude, longitude } = position.coords;
 
