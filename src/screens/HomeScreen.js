@@ -5,6 +5,9 @@ const HomeScreen = (props) => {
   return (
     <View>
     <Text style = {styles.text} > Hi there! < /Text>
+    <Button title="Go to Permission Screen"
+    onPress={() => props.navigation.navigate('Perm') }
+    />
     <Button title="Go to Location Screen"
     onPress={() => props.navigation.navigate('Location') }
     />
