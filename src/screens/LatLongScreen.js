@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StyleSheet, Text, View, PermissionsAndroid, Alert, Platform } from 'react-native';
+import { StyleSheet, Text, View, PermissionsAndroid, Alert, Platform, Button } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 
 
@@ -28,7 +28,7 @@ export async function request_device_location_runtime_permission() {
   }
 }
 
-export default class PermissionScreen extends Component {
+export default class LatLongScreen extends Component {
 
   constructor(){
 
@@ -81,6 +81,10 @@ export default class PermissionScreen extends Component {
         <Text style={styles.text}> Latitude = {this.state.latitude}</Text>
 
         <Text style={styles.text}> Longitude = {this.state.longitude}</Text>
+
+        <Button title="Go to Maps"
+        onPress={() => this.props.navigation.navigate('Location') }
+        />
 
       </View>
     );
